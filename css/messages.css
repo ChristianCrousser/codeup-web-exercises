@@ -26,7 +26,8 @@ body, html {
     background-color: lightgreen;
 }
 
-#yellow { box-sizing: border-box;
+#yellow {
+    box-sizing: border-box;
     padding: 10px;
     width: 300px;
     color:yellow;
