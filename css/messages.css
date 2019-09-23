@@ -1,0 +1,43 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+.space {
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+}
+#blue {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 300px;
+    color: blue;
+    background-color: lightblue;
+}
+
+#green {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 300px;
+    color: green;
+    background-color: lightgreen;
+}
+
+#yellow { box-sizing: border-box;
+    padding: 10px;
+    width: 300px;
+    color:yellow;
+    background-color: lightyellow;
+}
+
+#red {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 300px;
+    color: red;
+    background-color: indianred;
+}
+
