@@ -1,0 +1,115 @@
+/*
+Centered the title of page and added a navy color.
+Added an underline.
+Changed the font
+Changed the font size
+*/
+h1.fancy-header {
+    text-align: center;
+    text-decoration: underline;
+    color: navy;
+    font-family: 'Alfa slab one', cursive;
+    font-size: 45px;
+}
+/*
+Changed h3 heads to navy color
+Underlined the text
+Changed font
+Changed the font size
+ */
+h3.fancy-header {
+    color: navy;
+    text-decoration: underline;
+    font-size: 25px;
+    font-family: 'Alfa slab one', cursive;
+}
+/*
+Mouse hover over text
+Created a border for title
+Added padding
+ */
+h3:hover{
+    background-color: aqua;
+    border: 1px solid black;
+    padding: 10px;
+
+
+}
+/*
+Changed the background color of the body to brown.
+Added a background image
+Centered the body of the page
+ */
+body {
+    background-color: brown;
+    background-image: url("../img/white-waves.png");
+    text-align: center;
+    border: 4px solid black;
+}
+/*
+Changed unlisted block style
+Changed font of text
+Changed font size
+Centered text
+ */
+ul.b {
+    list-style-type: square;
+    font-family: 'Alfa slab one', cursive;
+    font-size: 20px;
+    display: inline-block;
+}
+/*
+Changed ordered list style
+Changed font of text
+Changed font size
+Centered text
+ */
+ol.c {
+    list-style-type: upper-roman;
+    font-family: 'Alfa slab one', cursive;
+    font-size: 20px;
+    display: inline-block;
+}
+/*
+Changed font of the text of paragraph
+Changed font size
+ */
+p.serif {
+    font-family: 'Patua one', cursive;
+    font-size: 35px;
+}
+/*
+Added a border to the table
+Changed font size of the text
+Changed height and width of the border
+ */
+table, th, td {
+    border: 1px solid black;
+    font-size: 20px;
+    height: 50px;
+    width: 1146px;
+}
+/*
+Changed font of the text
+ */
+th {
+    font-family:'Patua one', cursive;
+}
+/*
+Mouse hover over text
+ */
+th:hover {
+    background-color: aqua;
+}
+/*
+Changed font of the text
+ */
+td {
+    font-family: 'Alfa slab one', cursive;
+}
+/*
+Mouse hover over link
+ */
+a:hover {
+    background-color: yellow;
+}
