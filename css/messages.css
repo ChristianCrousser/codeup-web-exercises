@@ -5,7 +5,7 @@ body, html {
     margin: 0;
     font-family: Arial, Ubuntu, sans-serif;
 }
-.space {
+.message {
     margin: 8px;
     border: 1px solid lightgrey;
     border-radius: 10px;
@@ -14,7 +14,7 @@ body, html {
     box-sizing: border-box;
     padding: 10px;
     width: 300px;
-    color: blue;
+    color: navy;
     background-color: lightblue;
 }
 
@@ -37,7 +37,7 @@ body, html {
     box-sizing: border-box;
     padding: 10px;
     width: 300px;
-    color: red;
-    background-color: indianred;
+    color: brown;
+    background-color: palevioletred;
 }
 
