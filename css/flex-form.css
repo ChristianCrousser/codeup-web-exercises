@@ -51,11 +51,17 @@ body {
 
 /*flex solution*/
 .cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* flex container */
 }
 .flex-form {
+    display: flex;
+    margin: auto;
     /* flex items */
 }
 .destination {
+    flex-basis: 30%;
     /* bigger item */
 }

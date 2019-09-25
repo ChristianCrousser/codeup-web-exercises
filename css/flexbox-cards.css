@@ -38,8 +38,6 @@ a {
 
 .card-body {
     padding-bottom: 1em;
-    display: flex;
-
 }
 
 .feature-list {
@@ -68,9 +66,12 @@ a {
 }
 
 .container {
+    display: flex;
+    align-items: center;
     /* This is a flex container */
 }
 
 .card {
+    flex-basis: 100%;
     /* This is a flex item */
 }
