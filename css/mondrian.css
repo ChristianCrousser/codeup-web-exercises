@@ -1,34 +1,60 @@
-
 body {
     margin: 0;
     text-align: center;
 }
 main {
-    /* add margin to make the top of our grid more visible */
     margin-top: 2em;
-    background: white;
     display: inline-grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+
+
 }
 main div {
     font-size: 2em;
-    color: white;
+    color: black;
     background: grey;
-    border: 1px solid black; /* thin out border to 1px */
+    border: 4px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.example-item{
-    background: lightgreen;
-    opacity: .7;
+.one {
+    grid-area: 1 / 1 / 3 / 3;
+    background-color: blue;
 }
-.one {grid-area: 1 / 1 / 2 / 2}
-.two {grid-area: 1 / 2 / 2 / 3}
-.three {grid-area: 1 / 3 / 2 / 4}
-.four {grid-area: 2 / 1 / 3 / 2}
-.five {grid-area: 2 / 2 / 3 / 3}
-.six {grid-area: 2 / 3 / 3 / 4}
-.seven {grid-area: 3 / 1 / 4 / 2}
-.eight {grid-area: 3 / 2 / 4 / 3}
+.two {
+    grid-area: 3 / 1 / 6 / 3;
+    background-color: yellow;
+}
+.three {
+    grid-area: 6 / 1 / 8 / 3;
+    background-color: white;
+}
+.four {
+    grid-area: 8 / 1 / 8 / 3;
+    background-color: red;
+}
+.five {
+    grid-area: 1 / 3 / 4 / 9;
+    background-color: red;
+}
+.six {
+    grid-area: 8 / 3 / 4 / 5;
+    background-color: white;
+}
+.seven {
+    grid-area: 8 / 9 / 8 / 3;
+    background-color: blue;
+}
+.eight {
+    grid-area: 4 / 5 / 6 / 9;
+    background-color: white;
+}
+.nine {
+    grid-area: 6 / 5 / 8 / 9;
+    background-color: yellow;
+}
