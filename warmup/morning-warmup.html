@@ -13,12 +13,12 @@
         return sum;
     }
 
-    console.log(sum(2,2))
-    console.log(sum(3,4))
+    console.log(sum(2,2));
+    console.log(sum(3,4));
     //write function to find the area of a triangle
 function triangle(a,b,c) {
     //this variable stores half the perimeter
-    var half = (a + b + c)
+    var half = (a + b + c);
     {
         //the area is the squareroot of this
         var area = Math.sqrt(half * (half - a) * (half - b) * (half - c))
@@ -49,7 +49,14 @@ function triangle(a,b,c) {
     function firstNumber(arr) {
         return arr[0];
     }
-        console.log(firstNumber([1, 2, 3, 4]))
+        console.log(firstNumber([1, 2, 3, 4]));
+
+
+    function triangle(num) {
+        return trianglearea(num, num, num);
+    }
+    console.log(triangle(3))
+    consold.log(triangleArea(3,3,3))
 
 </script>
 
