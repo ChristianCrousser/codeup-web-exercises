@@ -84,3 +84,12 @@ function greaterThanFive(){
     var userNumber = parseInt(prompt("Please enter a number"));
     return userNumber > 5;
 }
+
+function helloThere(string = 'stranger') {
+    return 'Hello there, ' + string + '.';
+}
+
+var promptedResponse = prompt('Input string, plox.');
+alert(helloThere(promptedResponse));
+
+
