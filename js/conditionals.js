@@ -16,6 +16,25 @@
  * Can you refactor your code to use functions?
  */
 
+var numberMessage = confirm("Would you like to enter a number?");
+
+var enterNumber = parseInt(prompt("Enter your number."));
+
+if(enterNumber % 2 === 0) {
+    alert("number is even");
+} else {
+    alert("number is odd");
+}
+
+alert("Your number is " + (enterNumber + 100));
+
+if(enterNumber >= 0) {
+    alert("This number is positive");
+} else {
+    alert("This number is negative");
+}
+
+
 /* ########################################################################## */
 
 /**
@@ -35,6 +54,10 @@
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
+
+function analyzeColor(color) {
+
+}
 
 // Don't change the next two lines!
 // These lines create two variables for you:
