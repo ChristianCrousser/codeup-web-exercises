@@ -20,6 +20,8 @@ var numberMessage = confirm("Would you like to enter a number?");
 
 var enterNumber = parseInt(prompt("Enter your number."));
 
+var isNumber = !isNaN(enterNumber);
+
 if(enterNumber % 2 === 0) {
     alert("number is even");
 } else {
@@ -56,7 +58,18 @@ if(enterNumber >= 0) {
  */
 
 function analyzeColor(color) {
+    var colorMessage;
 
+    if(color === "blue") {
+        colorMessage = "Its blue"
+    } else if (color === "red") {
+        colorMessage = "Its red"
+    } else if (color === "cyan"){
+        colorMessage = "Cyan is a blue"
+    } else {
+        colorMessage = "I dont know that color"
+    }
+    return colorMessage;
 }
 
 // Don't change the next two lines!
@@ -72,10 +85,26 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message everytime you refresh the page
  */
 
+console.log(analyzeColor(randomColor));
+
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+function analyzeColorSwitch() {
+    var colorMessage;
+    switch(color) {
+        case "blue":
+            return "I like blue";
+        case "red":
+            return "red is fun";
+        case "cyan":
+            return "Cyan is cool";
+        default:
+            return "Look at all the colors";
+    }
+}
 
 /**
  * TODO:
@@ -83,6 +112,10 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+var userColor = prompt("Please enter a color");
+alert(analyzeColorSwitch(userColor));
+
 
 /* ########################################################################## */
 
@@ -106,6 +139,33 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
+function calculateTotal(luckyNumber, totalPrice) {
+    var discountTotal = 0;
+
+    switch(luckyNumber) {
+        case 0:
+            discountTotal = 0;
+            break;
+        case 1:
+            discountTotal = .1;
+            break;
+        case 2:
+            discountTotal = .25;
+            break;
+        case 3:
+            discountTotal = .35;
+            break;
+        case 4:
+            discountTotal = .50;
+            break;
+        case 5:
+            discountTotal = 1;
+            break;
+    }
+
+    return totalPrice - (totalPrice * discountTotal);
+}
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
@@ -114,4 +174,12 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+
+var totalBillPrompt = parseFloat(prompt("What was your total bill?"));
+
+var finalAmount = calculateTotal(luckyNumber, totalBillPrompt);
+
+alert("Your lucky number is: " +luckyNumber + " Your total bill was: " + totalBillPrompt + " Your discount price is " + finalAmount);
+
+
