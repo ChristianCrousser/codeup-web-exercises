@@ -96,3 +96,13 @@ function arrayLength(array) {
     return array.length
 }
 
+function logArray(arrayInput) {
+    console.log(arrayInput[0]);
+    console.log(arrayInput[1]);
+    console.log(arrayInput[2]);
+    console.log(arrayInput[3]);
+    console.log(arrayInput[4]);
+
+}
+
+logArray([1, 2, 3, 4, 5]);
