@@ -29,9 +29,11 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
 
+    person.sayHello = function() {
+        return "Hello from " + person.firstName + " " + person.lastName + "!";
+    };
 
-
-    console.log(person.sayHello());
+    // console.log(person.sayHello());
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -47,11 +49,25 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+
+
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
+
+    shoppers.forEach(function(shopper) {
+        var initialAmount = shopper.amount;
+        var discount = shopper.amount * .12;
+        var finalAmount = initialAmount - discount;
+    });
+
+    if(initialAmount > 200) {
+        console.log(shoppers.name + " spent " + initialAmount + ". They" + " grt a discount of " + discount + ". The total paid was: " + finalAmount);
+    } else {
+        console.log(shoppers.name + " paid " + initialAmount);
+    }
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -65,6 +81,41 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+
+    var books = [
+        {
+            title: "The Salmon of Doubt",
+            author: {
+                firstName: "Douglas",
+                lastName: "Adams"
+            }
+        },
+        {
+            title: "Harry Potter",
+            author: {
+                firstName: "JK",
+                lastName: "Rowling"
+            }
+        },
+        {
+            title: "A Brief History of Time",
+            author: {
+                firstName: "Stephen",
+                lastName: "Hawking"
+        },
+        {
+            title: "Warriors",
+            author: {
+                firstName: "Erin",
+                lastName: "Hunter"
+        },
+        {
+            title: "Walkaway",
+            author: {
+                firstName: "Cory",
+                lastName: "Doctorow"
+        }
+    ];
 
     /**
      * TODO:
@@ -91,6 +142,17 @@
      *      ...
      */
 
+
+    books.forEach(function(book,i) {
+        var output = "";
+        output += "Book # " + (i + 1);
+        output += "Title: " + book.title;
+        output += "Author: " + book.author.firstName + " " + book.author.lastName + "/n";
+        console.log(output);
+
+    });
+    }
+}
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -102,4 +164,15 @@
      *   `showBookInfo` function.
      */
 
+    function createBook(title,first,last) {
+        var book = {};
+        book.title = title;
+        book.author = {
+            firstName: first,
+            lastName: last
+        };
+        return book;
+    }
+
+    books.push(createBook("Cat's Cradle", "Kurt","V"));
 })();
