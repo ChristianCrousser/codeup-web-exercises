@@ -103,3 +103,13 @@ if(typeof num1 === 'number' && typeof num2 === 'number') {
     return false;
     }
 }
+
+function input(str) {
+    return typeof str == 'string' && str.length >= 8;
+}
+
+function number(num) {
+    if(typeof num === "number" && !isNaN(num)) {
+        return Math.floor(num);
+    }
+}

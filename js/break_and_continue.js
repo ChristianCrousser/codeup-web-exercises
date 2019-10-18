@@ -3,9 +3,10 @@
 while(true) {
     var num = parseInt(prompt("Give me an odd number between 1 and 50"));
     if (num % 2 !== 0 && num < 50 && num >= 1) {
-        break;
+       break;
     }
 }
+
 
 console.log("Skipping the number: " + num);
 
