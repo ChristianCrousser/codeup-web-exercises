@@ -1,10 +1,21 @@
 "use strict";
 
-var i = 1;
+// var i = 1;
+// // checks condition first, then runs if true
+// while(i < 1) {
+//     console.log('while:::: ');
+//     console.log(i*=2)
+// }
+// // runs, then checks the condition
+// do {
+//     console.log('do:::: ');
+//     console.log(i *= 2);
+// }while(i<1);
 
-while(i <= 65535) {
-    console.log(i*=2)
-}
+
+
+// var bob = Math.floor(Math.random() *100) +90;
+// console.log(bob);
 
 
 var allCones = Math.floor(Math.random() * 50) + 50;
