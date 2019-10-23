@@ -119,3 +119,11 @@ function counting(num) {
         console.log(i);
     }
 }
+
+function createPersonObject(name, age) {
+    var person = {};
+    person.name = name;
+    person.age = age;
+
+    return person
+}
