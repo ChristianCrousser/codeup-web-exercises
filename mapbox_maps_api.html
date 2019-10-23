@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4836, 29.4190]
+    });
+
+
+    var markerOptions = {
+        color: "#87CEFA"
+    };
+
+    // var marker = new mapboxgl.Marker(markerOptions)
+    //     .setLngLat([-98.4836, 29.4190])
+    //     .addTo(map);
+
+    // var towerPopup = new mapboxgl.Popup()
+    //     .setHTML("<h1>Tower of the Americas</h1>")
+    //     .addTo(map);
+
+    // marker.setPopup(towerPopup);
+
+    // geocode("739 E César E. Chávez Blvd, San Antonio, TX 78205", mapboxToken).then(function (result) {
+    //     console.log(result);
+
+        var resturant1 = {
+            address: "739 E César E. Chávez Blvd, San Antonio, TX 78205",
+            popupHTML: "Tower of the Americas"
+        };
+
+        var resturant2 = {
+            address: "13730 Embassy Rd, San Antonio, TX 78216",
+            popupHTML: "Beijing Resturant"
+        };
+
+        var resturant3 = {
+            address: "110 E Crockett St, San Antonio, TX 78205",
+            popupHTML: "Rainforest Cafe"
+        };
+
+        geocode(resturant1.address, mapboxToken).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(resturant1.popupHTML);
+
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .setPopup(popup)
+                .addTo(map)
+        });
+
+        geocode(resturant2.address, mapboxToken).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(resturant2.popupHTML);
+
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .setPopup(popup)
+                .addTo(map)
+        });
+        geocode(resturant3.address, mapboxToken).then(function(coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(resturant3.popupHTML);
+
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .setPopup(popup)
+                .addTo(map)
+        });
+
+
+
+
+</script>
+</body>
+</html>
