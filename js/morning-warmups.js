@@ -133,3 +133,9 @@ function createPersonObject(name, age) {
         else if (i % 5 === 0) console.log("Buzz");
         else console.log(i);
     }
+
+    function stringFive(five) {
+        if(five === "five"){
+            return 5
+            }
+    }
