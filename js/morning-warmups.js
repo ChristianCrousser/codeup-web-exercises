@@ -176,3 +176,42 @@ var shoppingCarts = [
 
     console.log(mostOranges(shoppingCarts));
 
+
+var students = [
+    {
+        name: "Mary",
+        grade: 10,
+        gpa: 3.7,
+        isRegistered: true
+    },
+    {
+        name: "Tim",
+        grade: 12,
+        gpa: 3.2,
+        isRegistered: false
+    },
+    {
+        name: "Ellie",
+        grade: 9,
+        gpa: 4.0,
+        isRegistered: false
+    },
+    {
+        name: "Alex",
+        grade: 10,
+        gpa: 3.9,
+        isRegistered: true
+    }
+];
+
+function checkRegistration(studentArray) {
+    var bucket = [0];
+        studentArray.forEach(function(student) {
+            if(!student.isRegistered) {
+                bucket.push(student)
+            }
+        });
+    return bucket;
+}
+
+console.log(checkRegistration(students));
