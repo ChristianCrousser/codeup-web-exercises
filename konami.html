@@ -4,15 +4,65 @@
     <title>Konami Code</title>
 </head>
 <body>
-<h1>Konami Code</h1>
+<h1>Type in your cheat code!</h1>
+<div id="konami"></div>
+<div id="gtaRhino"></div>
 
-<script src="/js/jquery-2.2.4.js"></script>
+<script src="js/jquery-2.2.4.js"></script>
 <script>
     "use strict";
-
+    var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]; //up, up, down, down, left, right, left, right, b, a, start
+    var userInput = [];
+    var index = 0;
     $(document).keyup(function(event){
         console.log(event.keyCode);
+        userInput.push(event.keyCode);
+        konamiCode();
+
     });
+
+    function konamiCode() {
+        if (userInput[index] === konami[index] ){
+            if (konami[konami.length-1] === userInput[konami.length-1]){
+                displayGame();
+                return;
+            }
+            index++;
+        } else {
+            userInput = [];
+            index = 0;
+        }
+    }
+
+    function displayGame() {
+        alert("You have added 30 lives!  You are really going to need them!");
+        $('#konami').html('<iframe src="https://oldgameshelf.com/life-force-580.html" height="550" width="552" frameborder="0"></iframe>');
+    }
+
+
+    var gtaRhino = [76, 76, 37, 76, 76, 39, 84, 79]; // L1, L1, left, L1, L1, right, triangle, circle
+    var userI = [];
+    var i = 0;
+
+    gtaCode();
+
+        function gtaCode() {
+            if (userI[i] === gtaRhino[i] ){
+                if (gtaRhino[gtaRhino.length-1] === userI[gtaRhino.length-1]){
+                    displayRhino();
+                    return;
+                }
+                index++;
+            } else {
+                userI = [];
+                i = 0;
+            }
+        }
+
+        function displayRhino() {
+            alert("Enjoy your tank!");
+            $('#gtaRhino').html('<iframe src="https://oldgameshelf.com/life-force-580.html" height="550" width="552" frameborder="0"></iframe>');
+        }
 </script>
 </body>
 </html>
