@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .invisible {
+            visibility: hidden;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="border">
+
+</div>
+<div class="border2">
+
+</div>
+<div class="border3">
+
+</div>
+</div>
+
+<dl>
+    <dt>How many employees are in the National Park Service?</dt>
+    <dd>Permanent, temporary, and seasonal employees: More than 20,000</dd>
+    <dt>How old is the National Park System?</dt>
+    <dd>The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the National Park System timeline.</dd>
+    <dt>How many people visit the national parks?</dt>
+    <dd>Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
+    <dt>Can I bring my pet to a national park?</dt>
+    <dd>Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities. Learn more about pets in parks.</dd>
+    <dt>Can I bring my service dog to a national park?</dt>
+    <dd>Yes, service dogs are legally permitted anywhere in a park that visitors can go. Learn more about service animals in national parks, including the difference between service animals and emotional support animals.</dd>
+    <dt>What do I need to know about driving off road in national parks?</dt>
+    <dd>Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
+    <dt>How do I apply for a job with the National Park Service?</dt>
+    <dd>National Park Service jobs, including both permanent and seasonal positions, are listed on USAJOBs. Learn more about working for us, including opportunities for students and volunteers and tips for applying for jobs.</dd>
+    <dt>How do I find out about contracting opportunities?</dt>
+    <dd>Opportunities to contract with the National Park Service are posted to FedBizOpps.gov, the federal government’s electronic business portal.</dd>
+    <dt>What are concessions?</dt>
+    <dd>Concessionaires provide park visitors with lodging, transportation, food services, shops, and other services. More than 480 NPS concession contracts in more than 100 different park units vary in size from small, family-owned businesses to national/international corporations. Learn more about commercial services in the National Park Service.</dd>
+    <dt>Where can I find a park map?</dt>
+    <dd>You can view maps on specific park websites or download maps from the Harpers Ferry Center map collection.</dd>
+</dl>
+
+<a href="#" id="styler">Toggle invisible</a>
+
+<h3 id="bigBend">Big Bend National Park</h3>
+<ul id="bigBendFacts">
+    <li>Big Bend National Park covers a total area of 801,163 acres.</li>
+    <li>Big Bend was made a national park on June 20, 1935</li>
+    <li>The lowest elevation found in Big Bend is 1,715 feet at the Rio Grande River</li>
+    <li>The highest elevation found in Big Bend is 7,832 feet on Emory Peak</li>
+</ul>
+<h3 id="yellowstone">Yellowstone National Park</h3>
+<ul id="yellowstoneFacts">
+    <li>Yellowstone National Park was established on March 1, 1872.</li>
+    <li>Yellowstone is the world’s first national park.</li>
+    <li>96% in Wyoming, 3% in Montana, 1% in Idaho</li>
+    <li>Larger than Rhode Island and Delaware combined</li>
+</ul>
+<h3 id="yosemite">Yosemite National Park</h3>
+<ul id="yosemiteFacts">
+    <li>The park is located in the Sierra Nevada Mountains.</li>
+    <li>There is a granite formation in Yosemite called the Half Dome. It reaches 5,000 feet above the floor of the valley.</li>
+    <li>20% of California's 7,000 plant species are found within Yosemite.</li>
+    <li>The mountains located in Yosemite still grow about one foot every 1,000 years.</li>
+</ul>
+
+<button type="button" id="highlight-ul">Highlight unordered lists</button>
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    $(document).ready(function() {
+
+            $("#styler").click(function() {
+                $("dd").toggleClass("invisible")
+         });
+        $("#highlight-ul").click(function(){
+            $("ul").each(function(){
+                $(this).children().last().css("background-color", "yellow");
+            })
+        });
+        $('h3').click(function(){
+            $(this).next().css('font-weight', 'bold');
+        });
+        $('li').click(function(){
+            $(this).parents().children().first().css('color', 'blue');
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
