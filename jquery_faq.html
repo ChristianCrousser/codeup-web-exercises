@@ -5,14 +5,27 @@
     <title>Title</title>
     <style>
 
-      .invisible {
-          visibility: hidden;
-      }
+        .invisible {
+            visibility: hidden;
+        }
+
 
     </style>
 </head>
 <body>
 
+<div class="container">
+
+<div class="border">
+
+</div>
+<div class="border2">
+
+</div>
+<div class="border3">
+
+</div>
+</div>
 
 <dl>
     <dt>How many employees are in the National Park Service?</dt>
@@ -37,19 +50,52 @@
     <dd>You can view maps on specific park websites or download maps from the Harpers Ferry Center map collection.</dd>
 </dl>
 
-<a href="#" class="invisible">Toggle invisible</a>
+<a href="#" id="styler">Toggle invisible</a>
+
+<h3 id="bigBend">Big Bend National Park</h3>
+<ul id="bigBendFacts">
+    <li>Big Bend National Park covers a total area of 801,163 acres.</li>
+    <li>Big Bend was made a national park on June 20, 1935</li>
+    <li>The lowest elevation found in Big Bend is 1,715 feet at the Rio Grande River</li>
+    <li>The highest elevation found in Big Bend is 7,832 feet on Emory Peak</li>
+</ul>
+<h3 id="yellowstone">Yellowstone National Park</h3>
+<ul id="yellowstoneFacts">
+    <li>Yellowstone National Park was established on March 1, 1872.</li>
+    <li>Yellowstone is the world’s first national park.</li>
+    <li>96% in Wyoming, 3% in Montana, 1% in Idaho</li>
+    <li>Larger than Rhode Island and Delaware combined</li>
+</ul>
+<h3 id="yosemite">Yosemite National Park</h3>
+<ul id="yosemiteFacts">
+    <li>The park is located in the Sierra Nevada Mountains.</li>
+    <li>There is a granite formation in Yosemite called the Half Dome. It reaches 5,000 feet above the floor of the valley.</li>
+    <li>20% of California's 7,000 plant species are found within Yosemite.</li>
+    <li>The mountains located in Yosemite still grow about one foot every 1,000 years.</li>
+</ul>
+
+<button type="button" id="highlight-ul">Highlight unordered lists</button>
 
 
-
-
-<script src="js/jquery-2.2.4.js">
-
+<script src="js/jquery-2.2.4.js"></script>
+<script>
     "use strict";
 
     $(document).ready(function() {
-        $('.invisible').click(function(event) {
-            event.preventDefault();
-            $("dd").toggleClass("invisible");
+
+            $("#styler").click(function() {
+                $("dd").toggleClass("invisible")
+         });
+        $("#highlight-ul").click(function(){
+            $("ul").each(function(){
+                $(this).children().last().css("background-color", "yellow");
+            })
+        });
+        $('h3').click(function(){
+            $(this).next().css('font-weight', 'bold');
+        });
+        $('li').click(function(){
+            $(this).parents().children().first().css('color', 'blue');
         });
     });
 
