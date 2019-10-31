@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Konami Code</title>
+    <style>
+
+        #konami {
+            position: fixed;
+            top: 130px;
+            left: 448px;
+
+    }
+        #tvBorder {
+            position: fixed;
+            top: 100px;
+            left: 400px;
+        }
+
+        #static {
+            position: fixed;
+            top: 135px;
+            left: 448px;
+        }
+
+        #lullaby {
+            position: fixed;
+            top: 130px;
+            left: 448px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Type in your cheat code!</h1>
+
+<img id="tvBorder" src="img/tv_border.jpeg" height="690" width="690">
+
+<img id="static" src="img/static.gif" height="487" width="496">
+
+<div id="konami"></div>
+
+<div id="lullaby"></div>
+
+<div id="horse-song"></div>
+
+<div id="time-song"></div>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+        userInput.push(event.keyCode);
+        konamiCodeOn();
+        // ocarinaZeldaLullaby();
+    });
+    var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]; //up, up, down, down, left, right, left, right, b, a, start
+        var zeldaLullaby = [37, 38, 39, 37, 38, 39]; //left, up, right, left, up, right
+        var eponaSong = [38, 37, 39, 38, 37, 39]; //up, left, right, up, left, right
+        var songOfTime = [39, 65, 40, 39, 65, 49]; //right, a, down, right, a, down
+
+        var userInput = [];
+        var index = 0;
+
+    function konamiCodeOn() {
+        if (userInput[index] === konamiCode[index] ){
+            if (konamiCode[konamiCode.length-1] === userInput[konamiCode.length-1]){
+                displayGame();
+                return;
+            }
+            index++;
+        } else {
+            userInput = [];
+            index = 0;
+        }
+
+    }
+
+    function displayGame() {
+        alert("You have added 30 lives!  You are really going to need them!");
+        $("#konami").html('<iframe src="https://oldgameshelf.com/life-force-580.html" height="497" width=496" frameborder="0"></iframe>');
+        $("#")
+    }
+
+
+    // function ocarinaZeldaLullaby() {
+        // document.getElementById("lullaby").style.backgroundImage = "url('img/zeldas_lullaby.png')";
+        // var audio = new Audio('img/zeldas_lullaby.mp3');
+        // audio.play();
+    //     if (userInput[index] === zeldaLullaby[index]){
+    //         if (zeldaLullaby[zeldaLullaby.length-1] === userInput[zeldaLullaby.length-1]){
+    //             playOcarina();
+    //             return;
+    //         }
+    //         index++;
+    //     } else {
+    //         userInput = [];
+    //         index = 0;
+    //     }
+    // }
+    //
+    // function playOcarina() {
+    //     alert("There is a mysterious power in these notes.");
+    //     $("#lullaby").html('<iframe src="img/zeldas_lullaby.mp3" height="497" width=496" frameborder="0",  frameborder="0"></iframe>');
+    //     $("#")
+    // }
+
+
+
+</script>
+</body>
+</html>
