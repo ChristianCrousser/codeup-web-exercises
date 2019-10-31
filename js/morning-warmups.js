@@ -96,6 +96,18 @@ function arrayLength(array) {
     return array.length
 }
 
+
+function logArray(arrayInput) {
+    console.log(arrayInput[0]);
+    console.log(arrayInput[1]);
+    console.log(arrayInput[2]);
+    console.log(arrayInput[3]);
+    console.log(arrayInput[4]);
+
+}
+
+logArray([1, 2, 3, 4, 5]);
+
 function quotient(num1, num2) {
 if(typeof num1 === 'number' && typeof num2 === 'number') {
     return num1 / num2;
@@ -259,4 +271,3 @@ function checkRegistration(studentArray) {
 }
 
 console.log(checkRegistration(students));
-
