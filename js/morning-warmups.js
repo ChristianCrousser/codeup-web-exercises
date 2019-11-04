@@ -270,4 +270,14 @@ function checkRegistration(studentArray) {
     return bucket;
 }
 
+
 console.log(checkRegistration(students));
+
+
+// Facebook to keep connected with friends and family
+// Twitch to watch when bored
+// Youtube to watch when bored
+
+=======
+console.log(checkRegistration(students));
+

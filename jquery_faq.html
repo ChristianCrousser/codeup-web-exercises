@@ -9,23 +9,21 @@
             visibility: hidden;
         }
 
+        ul, h2 {
+            display: none;
+        }
+
 
     </style>
 </head>
 <body>
 
-<div class="container">
-
-<div class="border">
-
+<div>
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span>X</span>
 </div>
-<div class="border2">
 
-</div>
-<div class="border3">
-
-</div>
-</div>
+<h2>Please Register for the Site</h2>
 
 <dl>
     <dt>How many employees are in the National Park Service?</dt>
@@ -91,14 +89,26 @@
                 $(this).children().last().css("background-color", "yellow");
             })
         });
-        $('h3').click(function(){
-            $(this).next().children().css('font-weight', 'bold');
+        $("h3").click(function(){
+            $(this).next().children().css("font-weight", "bold");
         });
-        $('li').click(function(){
-            $(this).parents().children().first().css('color', 'blue');
+        $("li").click(function(){
+            $(this).parents().children().first().css("color", "blue");
         });
     });
 
+    $("span").click(function(){
+        $(this).parent().hide();
+    });
+
+
+    $("h3").click(function (){
+        $(this).next().slideToggle().css("font-weight", "bold");
+    });
+
+    setInterval(function(){
+        $("h2").fadeIn();
+    }, 7000);
 
 
 </script>
