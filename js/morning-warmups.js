@@ -260,3 +260,8 @@ function checkRegistration(studentArray) {
 
 console.log(checkRegistration(students));
 
+
+// Facebook to keep connected with friends and family
+// Twitch to watch when bored
+// Youtube to watch when bored
+
