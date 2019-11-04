@@ -13,6 +13,36 @@
             display: none;
         }
 
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .frame {
+            border: 10px solid purple;
+            height: 250px;
+        }
+        .picture1 {
+            background-image: url("img/big_bend.jpg");
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+        }
+        .picture2 {
+            background-image: url("img/yellowstone.jpg");
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+        }
+        .picture3 {
+            background-image: url("img/yosemite.jpeg");
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+        }
+
+
 
     </style>
 </head>
@@ -24,6 +54,23 @@
 </div>
 
 <h2>Please Register for the Site</h2>
+
+<div class="row">
+    <div class="swapPic">
+        <div class="frame picture1"></div>
+        <button id="leftSwap">Swap</button>
+    </div>
+
+    <div class="swapPic">
+        <div class="frame picture2"></div>
+        <button id="middleSwap">Swap</button>
+    </div>
+
+    <div class="swapPic">
+        <div class="frame picture3"></div>
+        <button id="rightSwap">Swap</button>
+    </div>
+</div>
 
 <dl>
     <dt>How many employees are in the National Park Service?</dt>
@@ -109,6 +156,31 @@
     setInterval(function(){
         $("h2").fadeIn();
     }, 7000);
+
+    //set two variables that targets the left picture and the picture in the center and swaps them
+    $('#leftSwap').click(function() {
+        var oldClass = $(this).prev().attr("class").split(" ")[1];
+        var newClass = $(this).parent().next().children().first().attr("class").split(" ")[1];
+        $(this).parent().next().children().first().attr("class", "frame " + oldClass);
+        $(this).prev().attr("class", "frame " + newClass)
+    });
+
+    //set two additional variables that randomly swaps the middle picture with the left or right picture
+    $('#middleSwap').click(function() {
+        var randomChoice = Math.floor(Math.random() * (1 + 1));
+        var frameChoice = (randomChoice) ? $(this).parent().prev() : $(this).parent().next();
+        var oldClass = $(this).prev().attr("class").split(" ")[1];
+        var newClass = frameChoice.children().first().attr("class").split(" ")[1];
+        $(this).prev().attr("class", "frame " + newClass);
+        frameChoice.children().first().attr("class", "frame " + oldClass)
+    });
+
+    $('#rightSwap').click(function() {
+        var oldClass = $(this).prev().attr("class").split(" ")[1];
+        var newClass = $(this).parent().prev().children().first().attr("class").split(" ")[1];
+        $(this).parent().prev().children().first().attr("class", "frame " + oldClass);
+        $(this).prev().attr("class", "frame " + newClass)
+    });
 
 
 </script>
