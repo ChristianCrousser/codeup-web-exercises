@@ -96,6 +96,18 @@ function arrayLength(array) {
     return array.length
 }
 
+
+function logArray(arrayInput) {
+    console.log(arrayInput[0]);
+    console.log(arrayInput[1]);
+    console.log(arrayInput[2]);
+    console.log(arrayInput[3]);
+    console.log(arrayInput[4]);
+
+}
+
+logArray([1, 2, 3, 4, 5]);
+
 function quotient(num1, num2) {
 if(typeof num1 === 'number' && typeof num2 === 'number') {
     return num1 / num2;
@@ -107,6 +119,50 @@ if(typeof num1 === 'number' && typeof num2 === 'number') {
 function input(str) {
     return typeof str == 'string' && str.length >= 8;
 }
+
+
+var hamsters = [
+    {
+        name: "Hamtaro",
+        heightInMM: 86,
+        fur: ['orange', 'white'],
+        gender: "male",
+        dateOfBirth: "August 6"
+    } , {
+        name: "Bijou",
+        heightInMM: 75,
+        fur: ['white'],
+        gender: "female",
+        dateOfBirth: "July 10"
+    } , {
+        name: "Oxnard",
+        heightInMM: 100,
+        fur: ['grey', 'white'],
+        gender: "male",
+        dateOfBirth: "May 3"
+    } , {
+        name: "Boss",
+        heightInMM: 120,
+        fur: ['brown', 'white'],
+        gender: "male",
+        dateOfBirth: "Spetember 21"
+    } , {
+        name: "Snoozer",
+        heightInMM: 85,
+        fur: ['brown', 'white', "pink"],
+        gender: "male",
+        dateOfBirth: "January 14"
+    }
+];
+
+function heightOrder(height) {
+    height.sort(function(a,b) {
+        return a.heightInMM - b.heightInMM; {
+        }
+    });
+}
+
+console.log(heightOrder(hamsters));
 
 function number(num) {
     if(typeof num === "number" && !isNaN(num)) {
@@ -214,6 +270,7 @@ function checkRegistration(studentArray) {
     return bucket;
 }
 
+
 console.log(checkRegistration(students));
 
 
@@ -248,3 +305,15 @@ function inWords(num) {
 var randomNum = Math.floor(Math.random() * 10) +1;
 
 console.log(inWords());
+=======
+
+console.log(checkRegistration(students));
+
+
+// Facebook to keep connected with friends and family
+// Twitch to watch when bored
+// Youtube to watch when bored
+
+=======
+console.log(checkRegistration(students));
+

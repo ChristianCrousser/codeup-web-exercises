@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1  class="main-headings" id="top-songs-header">Top 10 songs</h1>
+
+<h2 class="secondary-heading" id="second-header">As well as Honorable Mentions</h2>
+
+<p class="paragraphs" id="paragraph order">This is a list of my favorite songs in order from 10 to 1.</p>
+
+<p id="disclaimer"> Disclaimer: Im entitled to my wrong opinions Mom. </p>
+
+        <hr>
+<h3>Top 10</h3>
+        <hr>
+
+<div class="container">
+    <ol class="ordered-list">
+        <li id="song1">Everybody Wants to Rule the World</li>
+        <li id="song2">Dream On</li>
+        <li id="song3">Unwell</li>
+        <li id="song4">Free</li>
+        <li id="song5">Kings</li>
+        <li id="song6">Don't Dream It's Over</li>
+        <li id="song7">September</li>
+        <li id="song8">Faithfully</li>
+        <li id="song9">The Edge of Tonight</li>
+        <li id="song10">Pure Imagination</li>
+        </ol>
+
+
+        <hr>
+<h3>Honorable Mentions</h3>
+        <hr>
+
+
+    <ul class="unordered-list">
+        <li id="song11">Bohemian Rhapsody</li>
+        <li id="song12">Humble and Kind</li>
+        <li id="song13">I Miss You</li>
+        <li id="song14">Run-Around</li>
+        <li id="song15">Send Me on My Way</li>
+    </ul>
+</div>
+
+
+
+
+
+<script src="js/jquery-2.2.4.js"
+integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+crossorigin="anonymous"></script>
+
+<script>
+    "use strict";
+
+    $(document).ready(function() {
+
+        $("h1").click(function () {
+            $(this).css("background-color", "purple");
+        });
+
+        $("p").dblclick(function () {
+            $(this).css("font-size", "18px");
+        });
+
+        $("li").hover(function () {
+            $(this).css("color", "red");
+        }, function () {
+            $(this).css("color", "black");
+        });
+    });
+
+
+
+
+
+        // $("li").css("font-size", "20px");
+        //
+        // $("li, p, h1").css("background-color", "yellow");
+        //
+        // var contents = $("h1").html();
+        // console.log(contents);
+
+</script>
+
+</body>
+</html>
+
+
