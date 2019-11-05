@@ -317,3 +317,14 @@ console.log(checkRegistration(students));
 =======
 console.log(checkRegistration(students));
 
+var myObject = {
+    gratitude: "thank you"
+};
+
+function sayWelcome(obj) {
+    if(obj.gratitude === "thank you") {
+        return "You're Welcome"
+    }
+}
+
+console.log(sayWelcome(myObject));
