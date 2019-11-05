@@ -314,7 +314,7 @@ console.log(checkRegistration(students));
 // Twitch to watch when bored
 // Youtube to watch when bored
 
-=======
+
 console.log(checkRegistration(students));
 
 var myObject = {
