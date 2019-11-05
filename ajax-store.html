@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Online Store</title>
 </head>
@@ -31,6 +31,9 @@
 
 
     var myInventory = $.ajax("data/inventory/json");
+        myInventory.done(function(data) {
+        console.log(data)
+    });
 
 
 
@@ -40,10 +43,14 @@
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
 
+
     function generateInventory() {
-        myInventory.done(function (data) {
+        var requestTools = $.ajax("data/inventory.json");
+
+        requestTools.done(function (data) {
+            console.log(data);
+
             $.each(data, function (index, tool) {
-                console.log(tool);
                 var tools = "<tr> <td>";
                 tools += tool.title;
                 tools += "</td> <td>";
@@ -54,7 +61,7 @@
                 tools += tool.categories;
                 tools += "</td> </tr>";
                 $('#insertProducts').append(tools);
-            })
+            });
         });
     }
 
