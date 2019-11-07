@@ -328,3 +328,7 @@ function sayWelcome(obj) {
 }
 
 console.log(sayWelcome(myObject));
+
+function randomBoolean() {
+    return Boolean(Math.floor(Math.random() * 2));
+}

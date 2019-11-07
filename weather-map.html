@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 400px;
+        }
+
+
+        body {
+            background-image: url("img/weather.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+
+        #submit {
+            width: 100%;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+<div id="darkMap"></div>
+
+<div id="container">
+<div id="weatherCards" class="container-fluid"></div>
+
+    <div class="container">
+        <header>
+            <h1>The Weather Application</h1>
+            <h3 id="location">San Antonio</h3>
+        </header>
+        <div class="card-group" id="weather"></div>
+        <input id="userInput"  class="form-control" type="text" placeholder="Search by City, State, or ZIP code">
+        <button id="submit" type="button" class="btn btn-primary">Submit</button>
+        <div id='map'></div>
+    </div>
+</div>
+
+
+<script src="js/jquery-2.2.4.js"></script>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<script src="js/keys.js"></script>
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+
+     mapboxgl.accessToken = mapboxToken;
+     var map = new mapboxgl.Map({
+         container: 'map',
+         style: 'mapbox://styles/mapbox/outdoors-v10',
+         zoom: 10,
+         center: [-98.4936, 29.4241]
+     });
+
+
+
+     var marker = new mapboxgl.Marker({
+         draggable: true
+     })
+         .setLngLat([-98.4936, 29.4241])
+         .addTo(map);
+
+
+
+     var weatherIcons = [
+         {
+             icon: "climacons-master/SVG/Cloud-Moon.svg",
+             name: "partly-cloudy-night"
+         },
+         {
+             icon: "climacons-master/SVG/Cloud.svg",
+             name: "cloudy"
+         },
+         {
+             icon: "climacons-master/SVG/Moon.svg",
+             name: "clear-night"
+         },
+         {
+             icon: "climacons-master/SVG/Snowflake.svg",
+             name: "snow"
+         },
+         {
+             icon: "climacons-master/SVG/Wind.svg",
+             name: "wind"
+         },
+         {
+             icon: "climacons-master/SVG/Cloud-Hail-Sun.svg",
+             name: "sleet"
+         },
+         {
+             icon: "climacons-master/SVG/Cloud-Fog.svg",
+             name: "fog"
+         },
+         {
+             icon: "climacons-master/SVG/Cloud-Rain-Alt.svg",
+             name: "rain"
+         },
+         {
+             icon: "climacons-master/SVG/Sun.svg",
+             name: "clear-day"
+         },
+         {
+             icon: "climacons-master/SVG/Cloud-Sun.svg",
+             name: "partly-cloudy-day"
+         }
+     ];
+
+
+     function typeOfWeather(weatherIcons, weatherIcon) {
+         for (var i = 0; i < weatherIcons.length; i++) {
+             if (weatherIcons[i].name === weatherIcon) {
+                 return weatherIcons[i].icon;
+             }
+         }
+     }
+
+
+          $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function(data){
+         var weatherConditions = "";
+         for(var i = 0; i < 3; i++) {
+                 var highTemp = data.daily.data[i].apparentTemperatureHigh;
+                 var lowTemp = data.daily.data[i].apparentTemperatureLow;
+                 var weather = data.daily.data[i];
+                 var weatherIcon = data.daily.data[i].icon;
+                 weatherConditions += "<div class=card>";
+                 weatherConditions += "<div class=card-body>";
+                 weatherConditions += "<h3 class=card-title><h5>High: </h5>" + Math.round(highTemp) + "˚ / <h5>Low: </h5>" + Math.round(lowTemp) + "˚</h3>";
+                 weatherConditions += "<img class=card-text src='"+ typeOfWeather(weatherIcons, weatherIcon) + "'>";
+                 weatherConditions += "<p class=card-text><h5>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</h5></p>";
+                 weatherConditions += "<p class=card-text><h5>" + weather.summary + "</h5></p>";
+                 weatherConditions += "<p class=card-text><h5>Humidity: </h5>" + weather.humidity + "</p>";
+                 weatherConditions += "<p class=card-text><h5>Wind: </h5>" + weather.windSpeed + "</p>";
+                 weatherConditions += "<p class=card-text><h5>Pressure: </h5>" + weather.pressure + "</p>";
+                 weatherConditions += "</div>";
+                 weatherConditions += "</div>";
+             }
+             $("#weather").html(weatherConditions);
+     });
+
+
+     function markerDrag() {
+         var coordinates = marker.getLngLat();
+         var latitude = coordinates.lat.toString();
+         var longitude = coordinates.lng.toString();
+         $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ", " + longitude).done(function (data) {
+             var weatherConditions = "";
+             for (var i = 0; i < 3; i++) {
+                 var highTemp = data.daily.data[i].apparentTemperatureHigh;
+                 var lowTemp = data.daily.data[i].apparentTemperatureLow;
+                 var weather = data.daily.data[i];
+                 var weatherIcon = data.daily.data[i];
+                 weatherConditions += "<div class=card>";
+                 weatherConditions += "<div class=card-body>";
+                 weatherConditions += "<h3 class=card-title><h5>High: </h5>High: </h5>" + Math.round(highTemp) + "° / <h5>Low: </h5>" + Math.round(lowTemp) + "°</h3>";
+                 weatherConditions += "<img class=card-text src='" + typeOfWeather(weatherIcons, weatherIcon) + "'>";
+                 weatherConditions += "<p class=card-text><h5>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</h5></p>";
+                 weatherConditions += "<p class=card-text><h5>" + weather.summary + "</h5></p>";
+                 weatherConditions += "<p class=card-text><h5>Humidity: </h5>" + weather.humidity + "</p>";
+                 weatherConditions += "<p class=card-text><h5>Wind: </h5>" + weather.windSpeed + "</p>";
+                 weatherConditions += "<p class=card-text><h5>Pressure: </h5>" + weather.pressure + "</p>";
+                 weatherConditions += "</div>";
+                 weatherConditions += "</div>";
+             }
+             $("#weather").html(weatherConditions);
+
+             console.log(data);
+         });
+     }
+
+     marker.on('dragend', markerDrag);
+     $('#submit').click(function() {
+         var location = $(userInput).val();
+         geocode(location, mapboxToken).then(function (result) {
+             var latitude = result[1].toString();
+             var longitude = result[0].toString();
+             $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ", " + longitude).done(function (data) {
+                 var weatherConditions = "";
+                 for (var i = 0; i < 3; i++) {
+                     var highTemp = data.daily.data[i].apparentTemperatureHigh;
+                     var lowTemp = data.daily.data[i].apparentTemperatureLow;
+                     var weather = data.daily.data[i];
+                     var weatherIcon = data.daily.data[i].icon;
+                     weatherConditions += "<div class=card>";
+                     weatherConditions += "<div class=card-body>";
+                     weatherConditions += "<h3 class=card-title><h5>High: </h5>" + Math.round(highTemp) + "° / <h5>Low: </h5>" + Math.round(lowTemp) + "°</h3>";
+                     weatherConditions += "<img class=card-text src='" + typeOfWeather(weatherIcons, weatherIcon) + "'>";
+                     weatherConditions += "<p class=card-text><h5>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</h5></p>";
+                     weatherConditions += "<p class=card-text><h5>" + weather.summary + "</h5></p>";
+                     weatherConditions += "<p class=card-text><h5>Humidity: </h5>" + weather.humidity + "</p>";
+                     weatherConditions += "<p class=card-text><h5>Wind: </h5>" + weather.windSpeed + "</p>";
+                     weatherConditions += "<p class=card-text><h5>Pressure: </h5>" + weather.pressure + "</p>";
+                     weatherConditions += "</div>";
+                     weatherConditions += "</div>";
+                 }
+                 $("#weather").html(weatherConditions);
+
+                 console.log(data);
+             });
+             map.flyTo({ center:result,zoom:10});
+             $("#location").html(location.charAt(0).toUpperCase() + location.slice(1,location.length));
+             marker.setLngLat([longitude, latitude])
+         });
+     });
+
+</script>
+</body>
+</html>
