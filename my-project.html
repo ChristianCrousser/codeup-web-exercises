@@ -14,5 +14,41 @@
 <body>
 <canvas width="320" height="640" id="game"></canvas>
 
+
+<script>
+
+function generateSequence() {
+    sequence = ["I", "L", "J", "S", "Z", "O", "T"];
+
+}
+
+
+var canvas = document.getElementById('game');
+
+var context = canvas.getContext("2d");
+
+// var tetrominoSequence = [];
+
+var grid = 32;
+
+var playfield = [];
+// populate the empty state
+for (var row = -2; row < 20; row++) {
+    playfield[row] = [];
+    for (var col = 0; col < 10; col++) {
+        playfield[row][col] = 0;
+    }
+}
+for (var row = 0; row < 20; row++) {
+    for (var col = 0; col < 10; col++) {
+        if (playfield[row][col]) {
+            var name = playfield[row][col];
+            context.fillStyle = colors[name];
+        }
+    }
+}
+
+
+</script>
 </body>
 </html>
