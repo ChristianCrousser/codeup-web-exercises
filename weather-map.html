@@ -213,6 +213,8 @@
 
              console.log(data);
          });
+         $("#location").html(location.charAt(0).toUpperCase() + location.slice(1,location.length));
+         marker.setLngLat([longitude, latitude])
      }
 
      marker.on('dragend', markerDrag);
