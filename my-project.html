@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tetris Board</title>
     <style>
 
         canvas {
@@ -17,10 +17,47 @@
 
 <script>
 
-function generateSequence() {
+    // get a random integer between the range of [min,max]
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+    function generateSequence() {
     sequence = ["I", "L", "J", "S", "Z", "O", "T"];
 
 }
+
+
+
+
+
+
+    // get the next tetromino in the sequence
+    function getNextTetromino() {
+        if (tetrominoSequence.length === 0) {
+            generateSequence();
+        }
+        var name = tetrominoSequence.pop();
+        var matrix = tetrominos[name];
+        // I and O start centered, all others start in left-middle
+        var col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
+        // I starts on row 21 (-1), all others start on row 22 (-2)
+        var row = name === 'I' ? -1 : -2;
+        return {
+            name: name,      // name of the piece (L, O, etc.)
+            matrix: matrix,  // the current rotation matrix
+            row: row,        // current row (starts offscreen)
+            col: col         // current col
+        };
+    }
+
+
+
+
+
 
 
 var canvas = document.getElementById('game');
@@ -48,6 +85,12 @@ for (var row = 0; row < 20; row++) {
     }
 }
 
+
+
+
+
+
+
 // game loop
 function loop() {
     rAF = requestAnimationFrame(loop);
@@ -64,6 +107,10 @@ function loop() {
         }
     }
 }
+
+
+
+
 
 
 </script>
