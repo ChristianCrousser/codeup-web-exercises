@@ -40,12 +40,12 @@
         if (tetrominoSequence.length === 0) {
             generateSequence();
         }
-        var name = tetrominoSequence.pop();
-        var matrix = tetrominos[name];
+        const name = tetrominoSequence.pop();
+        const matrix = tetrominos[name];
         // I and O start centered, all others start in left-middle
-        var col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
+        const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
         // I starts on row 21 (-1), all others start on row 22 (-2)
-        var row = name === 'I' ? -1 : -2;
+        const row = name === 'I' ? -1 : -2;
         return {
             name: name,      // name of the piece (L, O, etc.)
             matrix: matrix,  // the current rotation matrix
@@ -60,58 +60,30 @@
 
 
 
-var canvas = document.getElementById('game');
+const canvas = document.getElementById('game');
 
-var context = canvas.getContext("2d");
+const context = canvas.getContext("2d");
 
-var tetrominoSequence = [];
+const tetrominoSequence = [];
 
-var grid = 32;
+const grid = 32;
 
-var playfield = [];
+const playfield = [];
 // populate the empty state
-for (var row = -2; row < 20; row++) {
+for (let row = -2; row < 20; row++) {
     playfield[row] = [];
-    for (var col = 0; col < 10; col++) {
+    for (let col = 0; col < 10; col++) {
         playfield[row][col] = 0;
     }
 }
-for (var row = 0; row < 20; row++) {
-    for (var col = 0; col < 10; col++) {
+for (let row = 0; row < 20; row++) {
+    for (let col = 0; col < 10; col++) {
         if (playfield[row][col]) {
-            var name = playfield[row][col];
+            let name = playfield[row][col];
             context.fillStyle = colors[name];
         }
     }
 }
-
-
-
-
-
-
-
-// game loop
-function loop() {
-    rAF = requestAnimationFrame(loop);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    // draw the playfield
-    for (var row = 0; row < 20; row++) {
-        for (var col = 0; col < 10; col++) {
-            if (playfield[row][col]) {
-                var name = playfield[row][col];
-                context.fillStyle = colors[name];
-                // drawing 1 px smaller than the grid creates a grid effect
-                context.fillRect(col * grid, row * grid, grid - 1, grid - 1);
-            }
-        }
-    }
-}
-
-
-
-
-
 
 </script>
 </body>
