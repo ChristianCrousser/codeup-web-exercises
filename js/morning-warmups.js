@@ -332,3 +332,16 @@ console.log(sayWelcome(myObject));
 function randomBoolean() {
     return Boolean(Math.floor(Math.random() * 2));
 }
+
+
+var  myNumber = [1, 2, 3, 4, 5, 6, 7, 8];
+function newArray(arr) {
+    var bucket = [];
+        arr.forEach(fucntion(num) {
+            if(num % 2 === 0){
+                newArray.push(num);
+    }
+        });
+    return newArray
+
+}
