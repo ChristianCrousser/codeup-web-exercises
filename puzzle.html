@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+    .container{
+        position: fixed;
+        top: 300px;
+        left: 450px;
+    }
+    #match {
+        position: fixed;
+        top: 340px;
+        left: 120px;
+
+    }
+
+    #match2 {
+        position: fixed;
+        top: 352px;
+        left: 105px;
+
+    }
+
+    #match3 {
+        position: fixed;
+        top: 350px;
+        left: 560px;
+
+    }
+
+    #match4 {
+        position: fixed;
+        top: 352px;
+        left: 337px;
+
+    }
+
+    #match5 {
+        position: fixed;
+        top: 453px;
+        left: 778px;
+
+    }
+
+    #match6 {
+        position: fixed;
+        top: 350px;
+        right: 135px;
+
+    }
+
+    #match7 {
+        position: fixed;
+        top: 223px;
+        left: 778px;
+
+    }
+
+    #match8 {
+        position: fixed;
+        top: 350px;
+        left: 995px;
+
+    }
+
+    .rotate {
+        transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+    }
+
+    .match {
+        position: absolute;
+        z-index: 9;
+        background-color: #f1f1f1;
+        text-align: center;
+        border: 1px solid #d3d3d3;
+    }
+
+
+    #mydivheader {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: 20px;
+        cursor: move;
+        z-index: 10;
+        background-color: #2196F3;
+        color: #fff;
+    }
+</style>
+<body>
+<h1>The Best Eleven</h1>
+
+<p>This lot love Soccer, but their team is full of such useless players that they're known as 'H10' (the 'Hopeless Ten') Yes, they only have ten players. Can you move one match to turn them into an 11-player team? Slide the match to move it, and touch to rotate.</p>
+
+
+<div class="container">
+<div id="match" class="match">
+    <div id="mydivheader">Click here to move 1</div>
+</div>
+
+<div id="match2" class="match rotate">
+    <div id="mydivheader">Click here to move 2</div>
+</div>
+
+<div id="match3" class="match rotate">
+    <div id="mydivheader">Click here to move 3</div>
+</div>
+
+<div id="match4" class="match rotate">
+    <div id="mydivheader">Click here to move 4</div>
+</div>
+
+<div id="match5" class="match">
+    <div id="mydivheader">Click here to move 5</div>
+</div>
+
+<div id="match6" class="match rotate">
+    <div id="mydivheader">Click here to move 6</div>
+</div>
+
+<div id="match7" class="match">
+    <div id="mydivheader">Click here to move 7</div>
+</div>
+
+<div id="match8" class="match rotate">
+    <div id="mydivheader">Click here to move 8</div>
+</div>
+</div>
+
+<script>
+    //Make the DIV element draggable:
+    dragElement(document.getElementById("match"));
+    dragElement(document.getElementById("match2"));
+    dragElement(document.getElementById("match3"));
+    dragElement(document.getElementById("match4"));
+    dragElement(document.getElementById("match5"));
+    dragElement(document.getElementById("match6"));
+    dragElement(document.getElementById("match7"));
+    dragElement(document.getElementById("match8"));
+
+
+
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+            /* if present, the header is where you move the DIV from:*/
+            document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+            /* otherwise, move the DIV from anywhere inside the DIV:*/
+            elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+</script>
+
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<body>-->
+
+
+<!--<script>-->
+<!--    var htmlElements = "";-->
+<!--    for (var i = 0; i < array.length; i++) {-->
+<!--        htmlElements += '<div class="box"></div>';-->
+<!--    }-->
+<!--    var container = document.getElementById("container");-->
+<!--    container.innerHTML = htmlElements;-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
