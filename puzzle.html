@@ -92,7 +92,7 @@
         width: 200px;
         height: 100px;
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 500px;
         /*top: 305px;*/
         /*left: 465px;*/
@@ -189,7 +189,7 @@
 
 
 
-<div id="box" style="background:red" ondrop="alert('over red!')"></div>
+<div id="box" style="background:red" onmouseleave="alert('over red!')"></div>
 
 <script>
     //Make the DIV element draggable:
@@ -281,6 +281,8 @@
                 if (currentDroppable) { // null if we're not coming over a droppable now
                     // (maybe just left the droppable)
                     enterDroppable(currentDroppable);
+                } else {
+                    alert("You win")
                 }
             }
         }
@@ -299,7 +301,7 @@
     }
 
     function leaveDroppable(elem) {
-        elem.style.background = '';
+        elem.style.background = ''
     }
 
     match.ondragstart = function() {
