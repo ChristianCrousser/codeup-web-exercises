@@ -345,3 +345,17 @@ function newArray(arr) {
     return newArray
 
 }
+
+const evenPromise = num => {
+    return new Promise((resolve, reject) => {
+        if (num % 2 === 0) {
+            resolve();
+        } else {
+            reject();
+        }
+    })
+};
+
+evenPromise(4)
+    .then(message => console.log(message))
+    .catch(message => console.log(message));

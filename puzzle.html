@@ -43,11 +43,11 @@
     }
 
     #match6 {
-        position: fixed;
-        top: 350px;
-        right: 135px;
+          position: absolute;
+          top: 50px;
+          left: 314px;
 
-    }
+      }
 
     #match7 {
         position: fixed;
@@ -87,13 +87,67 @@
         background-color: #2196F3;
         color: #fff;
     }
+
+    #box {
+        width: 200px;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        left: 500px;
+        /*top: 305px;*/
+        /*left: 465px;*/
+        z-index: -1;
+    }
+    /*.box {*/
+    /*    height: 100px;*/
+    /*    width: 100px;*/
+    /*    background-color: black;*/
+    /*    position: relative;*/
+    /*    top: 5px;*/
+    /*    left: 5px;*/
+    /*    cursor: pointer;*/
+    /*}*/
+
+    /*.held {*/
+    /*    border: solid 10px black;*/
+    /*    background-color: black;*/
+    /*}*/
+
+    /*.holder {*/
+    /*    height: 20px;*/
+    /*    width: 250px;*/
+    /*    margin: 10px;*/
+    /*    border: solid 5px black;*/
+    /*    background-color: white;*/
+    /*    display: inline-block;*/
+    /*}*/
+
+    /*.hovered {*/
+    /*    border: dotted 5px black;*/
+    /*}*/
+
+    /*.invisible {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*#container {*/
+    /*    margin: auto;*/
+    /*    top: 100px;*/
+    /*    width: 400px;*/
+    /*    position: relative;*/
+    /*}*/
 </style>
 <body>
 <h1>The Best Eleven</h1>
 
-<p>This lot love Soccer, but their team is full of such useless players that they're known as 'H10' (the 'Hopeless Ten') Yes, they only have ten players. Can you move one match to turn them into an 11-player team? Slide the match to move it, and touch to rotate.</p>
+<p>This lot love football, but their team is full of such useless players that they're known as 'H10' (the 'Hopeless Ten') Yes, they only have ten players. Can you move one match to turn them into an 11-player team? Slide the match to move it, and touch to rotate.</p>
 
 
+<img src="climacons-master/SVG/Cloud.svg" id="gate" class="droppable">
+
+<!--<img src="climacons-master/SVG/Moon.svg" id="match">-->
+
+<!--<div id="container">-->
 <div class="container">
 <div id="match" class="match">
     <div id="mydivheader">Click here to move 1</div>
@@ -127,6 +181,15 @@
     <div id="mydivheader">Click here to move 8</div>
 </div>
 </div>
+
+<!--    <div class="holder">-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<div id="box" style="background:red" ondrop="alert('over red!')"></div>
 
 <script>
     //Make the DIV element draggable:
@@ -181,6 +244,135 @@
             document.onmousemove = null;
         }
     }
+
+    let currentDroppable = null;
+
+    match.onmousedown = function(event) {
+
+        let shiftX = event.clientX - match.getBoundingClientRect().left;
+        let shiftY = event.clientY - match.getBoundingClientRect().top;
+
+        match.style.position = 'absolute';
+        match.style.zIndex = 1000;
+        document.body.append(match);
+
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            match.style.left = pageX - shiftX + 'px';
+            match.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+
+            match.hidden = true;
+            let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+            match.hidden = false;
+
+            if (!elemBelow) return;
+
+            let droppableBelow = elemBelow.closest('.droppable');
+            if (currentDroppable != droppableBelow) {
+                if (currentDroppable) { // null when we were not over a droppable before this event
+                    leaveDroppable(currentDroppable);
+                }
+                currentDroppable = droppableBelow;
+                if (currentDroppable) { // null if we're not coming over a droppable now
+                    // (maybe just left the droppable)
+                    enterDroppable(currentDroppable);
+                }
+            }
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        match.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            match.onmouseup = null;
+        };
+
+    };
+
+    function enterDroppable(elem) {
+        elem.style.background = 'pink';
+    }
+
+    function leaveDroppable(elem) {
+        elem.style.background = '';
+    }
+
+    match.ondragstart = function() {
+        return false;
+    };
+    //
+    // function dragStart(alert) {
+    //     alert.dataTransfer.setData("Text", alert.target.id);
+    //     document.getElementById("box").innerHTML = "Started to drag the p element";
+    // }
+    //
+    // /* Events fired on the drop target */
+    // function allowDrop(alert) {
+    //     alert.preventDefault();
+    // }
+    //
+    // function drop(alert) {
+    //     alert.preventDefault();
+    //     var data = alert.dataTransfer.getData("Text");
+    //     alert.target.appendChild(document.getElementById(data));
+    //     document.getElementById("box").innerHTML = "The p element was dropped";
+    // }
+
+    // class App {
+    //
+    //     static init() {
+    //
+    //         App.box = document.getElementsByClassName('match')[0]
+    //
+    //         App.box.addEventListener("dragstart", App.dragstart)
+    //         App.box.addEventListener("dragend", App.dragend)
+    //
+    //         const containers = document.getElementsByClassName('holder')
+    //
+    //         for(const container of containers) {
+    //             container.addEventListener("dragover", App.dragover)
+    //             container.addEventListener("dragenter", App.dragenter)
+    //             container.addEventListener("dragleave", App.dragleave)
+    //             container.addEventListener("drop", App.drop)
+    //         }
+    //     }
+    //
+    //     static dragstart() {
+    //         this.className += " held"
+    //
+    //         setTimeout(()=>this.className="invisible", 0)
+    //     }
+    //
+    //     static dragend() {
+    //         this.className = "match"
+    //     }
+    //
+    //     static dragover(e) {
+    //         e.preventDefault()
+    //     }
+    //
+    //     static dragenter(e) {
+    //         e.preventDefault()
+    //         this.className += " hovered"
+    //     }
+    //
+    //     static dragleave() {
+    //         this.className = "holder"
+    //     }
+    //
+    //     static drop() {
+    //         this.className = "holder"
+    //         this.append(App.box)
+    //     }
+    //
+    // }
+    //
+    // document.addEventListener("DOMContentLoaded", App.init)
 </script>
 
 </body>
