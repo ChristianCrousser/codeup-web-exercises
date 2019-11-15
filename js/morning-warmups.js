@@ -359,3 +359,13 @@ const evenPromise = num => {
 evenPromise(4)
     .then(message => console.log(message))
     .catch(message => console.log(message));
+
+
+const helloMessage = () => {
+    return new Promise((resolve, reject) => {
+        resolve("Hello!");
+    })
+};
+helloMessage().then(message => {
+    document.getElementsByTagName("body")[0].innerHTML += `<h1>${message}</h1>`;
+});
