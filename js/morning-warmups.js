@@ -369,3 +369,8 @@ const helloMessage = () => {
 helloMessage().then(message => {
     document.getElementsByTagName("body")[0].innerHTML += `<h1>${message}</h1>`;
 });
+
+
+const piToSix = () => parseFloat(Math.PI.toFixed(6));
+
+console.log((piToSix()));
