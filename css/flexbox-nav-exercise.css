@@ -1,0 +1,71 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.nav {
+    box-sizing: border-box;
+    background-color: darkgray;
+    color: black;
+    display: flex;
+    padding: 0;
+}
+.nav-container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 50px);
+}
+.nav-list {
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+}
+.right {
+    /*justify-self: flex-start;*/
+    /*align-self: flex-start;*/
+    display: flex;
+    justify-content: flex-start;
+}
+.left {
+    /*justify-self: flex-end;*/
+    /*align-self: flex-end;*/
+    display: flex;
+    justify-content: flex-end;
+}
+.mid {
+    display: flex;
+    justify-self: center;
+}
+.mid li a {
+    font-size: 3em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    position: absolute;
+    display: flex;
+    top: -.01em;
+    left: 11em;
+}
+a {
+    margin: 0;
+}
+.nav-item a {
+    box-sizing: border-box;
+    display: inline-block;
+    padding-right: 1em;
+    padding-left: 1em;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
+    /*font-size: 1em;*/
+}
+.nav-item a:hover {
+    color: blue;
+}
+.nav-item a img {
+    display: flex;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+}
