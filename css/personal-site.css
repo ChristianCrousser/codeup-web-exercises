@@ -1,0 +1,22 @@
+body {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background: black;
+}
+#longPiece {
+    width: 50px;
+    height: 250px;
+    position: absolute;
+    background-color: cyan;
+    opacity: 50%;
+    left: 50vh;
+}
+#cubePiece {
+    width: 125px;
+    height: 125px;
+    position: absolute;
+    background-color: yellow;
+    opacity: 50%;
+    left: 56vh;
+}
