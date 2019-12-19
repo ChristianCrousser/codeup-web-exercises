@@ -101,9 +101,16 @@
 
         for (let row = playfield.length - 1; row >= 0; ) {
             if (playfield[row].every(cell => !!cell)) {
+
                 // drop every row above this one
+                // for (let r = row; r >= 0; r--) {
+                //     playfield[r] = playfield[r-1];
+                // }
+
                 for (let r = row; r >= 0; r--) {
-                    playfield[r] = playfield[r-1];
+                    for (let c = 0; c < playfield[r].length; c++) {
+                        playfield[r][c] = playfield[r-1][c];
+                    }
                 }
             } else {
                 row--;
