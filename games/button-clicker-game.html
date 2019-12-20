@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Clicker</title>
+    <style>
+        body {
+            font-size: 60px;
+            color: black;
+            text-align: center;
+        }
+        #button {
+            width: 150px;
+            height: 100px;
+            position: relative;
+            left: 40px;
+            bottom: 95px;
+        }
+        button {
+            position: relative;
+            left: 30px;
+            bottom: 135px;
+            height: 70px;
+            width: 120px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="main">
+
+    <p id='theScore'>Current Highscore: 0</p>
+    <h1>Press Button for points!</h1>
+    <button onclick="startButton()">Start Timer!</button>
+    <input onclick="press()" type="image" id="button" alt="buttonClick" src="button.jpg">
+    <p id="score"></p>
+</div>
+<!--    <h1>How many clicks can you get???</h1>-->
+
+<!--    <button id="clickme">Click me: 0</button>-->
+
+<!--    <div id="countdown"></div>-->
+
+
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+
+    var Uscore = 0;
+
+    var highscore = 0;
+
+    var press = function() {
+        Uscore++;
+        document.getElementById('score').innerHTML = "Your Score: " + Uscore;
+
+        if (Uscore > highscore) {
+            document.getElementById('theScore').innerHTML = "New Highscore: " + Uscore;
+
+        }
+    };
+
+    var timer;
+
+    function startButton() {
+        timer = setTimeout(function() {
+            alert("STOP"); }, 10000);
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div#memory_board{
+            background:#CCC;
+            border:#999 1px solid;
+            width:800px;
+            height:540px;
+            padding:24px;
+            margin:0px auto;
+        }
+        div#memory_board > div{
+            border:#000 1px solid;
+            width:71px;
+            height:71px;
+            float:left;
+            margin:10px;
+            padding:20px;
+            font-size:64px;
+            cursor:pointer;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<div id="memory_board"></div>
+<script>
+    //prototype to add to all array objects
+    var memory_letters = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
+    var memory_values = [];
+    var memory_tile_ids = [];
+    var tiles_flipped = 0;
+    Array.prototype.memory_tile_shuffle = function(){
+        var i = this.length, j , shuffle;
+        while(--i > 0){
+            j = Math.floor(Math.random() * (i+1));
+            shuffle = this[j];
+            this[j] = this[i];
+            this[i] = shuffle;
+        }
+    };
+    //add array and shuffle method to new board every time
+    function newBoard(){
+        tiles_flipped = 0;
+        var output = '';
+        memory_letters.memory_tile_shuffle();
+        for(var i = 0; i < memory_letters.length; i++){
+            output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_letters[i]+'\')"></div>';
+        }
+        //put cards into memory board
+        document.getElementById('memory_board').innerHTML = output;
+    }
+    function memoryFlipTile(tile,val){
+        //if tile is empty and memory values is less than 2 run code
+        if(tile.innerHTML == "" && memory_values.length < 2){
+            //when clicked cards should turn white and have a letter
+            tile.style.background = '#FFF';
+            tile.innerHTML = val;
+            //if card values dont match flip back over and that only two cards can be clicked at once
+            if(memory_values.length == 0){
+                memory_values.push(val);
+                memory_tile_ids.push(tile.id);
+            } else if(memory_values.length == 1){
+                memory_values.push(val);
+                memory_tile_ids.push(tile.id);
+                //condition to see if both cards are a match
+                if(memory_values[0] == memory_values[1]){
+                    tiles_flipped += 2;
+                    // Clear both arrays
+                    memory_values = [];
+                    memory_tile_ids = [];
+                    // Check to see if the whole board is cleared
+                    if(tiles_flipped == memory_letters.length){
+                        alert("You cleared the board!  Have a cookie.");
+                        document.getElementById('memory_board').innerHTML = "";
+                        newBoard();
+                    }
+                } else {
+                    function flip2Back(){
+                        // Flip the 2 tiles back over
+                        var tile_1 = document.getElementById(memory_tile_ids[0]);
+                        var tile_2 = document.getElementById(memory_tile_ids[1]);
+                        tile_1.style.background = 'no-repeat';
+                        tile_1.innerHTML = "";
+                        tile_2.style.background = 'no-repeat';
+                        tile_2.innerHTML = "";
+                        // Clear both arrays
+                        memory_values = [];
+                        memory_tile_ids = [];
+                    }
+                    setTimeout(flip2Back, 500);
+                }
+            }
+        }
+    }
+</script>
+<script>newBoard();</script>
+</body>
+</html>
